@@ -7,11 +7,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// FLAGS
-// this should be defined in other place
-var Application string
-var DirectoryBase string
-
 // set command properties
 var rootCmd = &cobra.Command{
 	Use: "genialo",

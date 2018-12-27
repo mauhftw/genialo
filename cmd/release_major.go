@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"fmt"
+	//"fmt"
 
 	"github.com/spf13/cobra"
 )
@@ -10,14 +10,11 @@ import (
 var majorCmd = &cobra.Command{
 	Use:   "major",
 	Short: "Creates a new major release",
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("major called")
-	},
+	Run:   GithubHandler,
 }
 
 func init() {
-	majorCmd.Flags().StringVarP(&DirectoryBase, "directory-base", "d", "", "The current directory you will work on")
 	majorCmd.Flags().StringVarP(&Application, "application", "a", "", "The name of the application you want to release")
+	majorCmd.Flags().StringVarP(&Organization, "organization", "o", "SweatWorks", "The name of the organization/owner of the repo")
 	majorCmd.MarkFlagRequired("application")
-	majorCmd.MarkFlagRequired("directory-base")
 }

@@ -4,7 +4,11 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// releaseCmd represents the release command
+// release flags
+var Application string
+var DirectoryBase string
+var Organization string
+
 var releaseCmd = &cobra.Command{
 	Use:   "release",
 	Short: "Creates a new software release following semantic versioning approach",
