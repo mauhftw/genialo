@@ -1,8 +1,8 @@
 package cmd
 
 import (
+	"bytes"
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"os"
 	"os/exec"
@@ -36,11 +36,22 @@ type ReleaseOptions struct {
 	Token         string
 }
 
+// github release payload
+type ReleasePayload struct {
+	TagName         string `json:tag_name`
+	TargetCommitish string `json:target_commitish`
+	Name            string `json:name`
+	Body            string `json:body`
+	Draft           bool   `json:draft`
+	PreRelease      bool   `json:prerelease`
+}
+
 // TASKS
 // get latest tag  X
 // increment version X
 // generate changelog X
-// create release
+// commit changelog
+// create release X
 
 // create changelogs and git releases
 func GithubHandler(cmd *cobra.Command, args []string) {
@@ -52,22 +63,26 @@ func GithubHandler(cmd *cobra.Command, args []string) {
 		Token:        config.GithubAccessToken,
 	}
 
-	log.Info("Getting latest release of ", opt.Application)
+	// get latest release created
+	log.Infof("Getting latest release of %v", opt.Application)
 	getLastestTag(opt)
-	log.Info("Latest release is: ", opt.FutureRelease)
+	log.Infof("Latest release is: %v", opt.FutureRelease)
 
 	// increment version depending major,minor,patch
 	getFutureRelease(opt, "major")
-	log.Info("New release is: ", opt.FutureRelease)
+	log.Infof("New release is: %v", opt.FutureRelease)
 
 	// generate changelog. Works if i use sudo, ruby problem
-	log.Info("Creating changelog in /tmp/", opt.Application)
+	log.Infof("Creating changelog in /tmp/ %v", opt.Application)
 	buildChangelog(opt)
-	log.Info("Changelog created succesfully in /tmp/", opt.Application)
+	log.Infof("Changelog created succesfully in /tmp/ %v", opt.Application)
 
 	// commit changelog
 
-	// create release
+	// create new release version
+	log.Infof("Creating new release: %v", opt.FutureRelease)
+	createRelease(opt)
+	log.Infof("Release: %v has been created successful %v", opt.FutureRelease)
 
 }
 
@@ -79,9 +94,9 @@ func buildChangelog(o *ReleaseOptions) error {
 
 	// check for temporal directory existence. REFACTOR use switch case
 	if _, err := os.Stat(dst); err != nil {
-		log.Info("Creating directory...")
+		log.Infof("Directory %v doesn't exist. Creating directory...", o.Application)
 		if err := os.Mkdir(dst, 0777); err != nil {
-			fmt.Fprintln(os.Stdout, "There was an error creating the directory: ", err)
+			log.Fatalf("There was an error creating the directory: %v ", err)
 		}
 	}
 
@@ -99,8 +114,7 @@ func buildChangelog(o *ReleaseOptions) error {
 	err := cmdRun.Run()
 
 	if err != nil {
-		fmt.Fprintln(os.Stdout, "There was an error running command: ", err)
-		log.Fatal("The command couldn't be executed")
+		log.Fatalf("There was an error running the %v command: %v ", cmd, err)
 		return err
 	}
 
@@ -117,16 +131,16 @@ func getLastestTag(o *ReleaseOptions) {
 
 	resp, err := http.Get(url)
 	if err != nil {
-		log.Fatal("error:", err)
+		log.Fatalf("There was a problem trying to reach %v. %v:", url, err)
 	}
 
 	defer resp.Body.Close()
 
-	// transofrm request stream into json
+	// decode request stream into json
 	p := make([]TagPayloadJson, 0)
 	dec := json.NewDecoder(resp.Body)
 	if err := dec.Decode(&p); err != nil {
-		log.Fatal("Error", err)
+		log.Fatalf("Can't decode json. %v", err)
 	}
 
 	// get github latest tag and parse it
@@ -136,5 +150,40 @@ func getLastestTag(o *ReleaseOptions) {
 
 	// sets future release
 	o.FutureRelease = latestTag
+
+}
+
+// create a new software release
+func createRelease(o *ReleaseOptions) {
+
+	// we build https://api.github.com/repos/{owner}/{repo}/releases?access_token={access_token} for creating a new release
+	url := "https://api.github.com/repos/" + o.Organization +
+		"/" + o.Application +
+		"/" + "/releases?access_token=" +
+		o.Token
+
+	contentType := "application/json"
+	body := &ReleasePayload{
+		TagName:         "release" + o.FutureRelease,
+		TargetCommitish: "master",
+		Name:            "release" + o.FutureRelease,
+		Body:            "example",
+		Draft:           false,
+		PreRelease:      false,
+	}
+
+	// encode json to stream
+	var buf bytes.Buffer
+	enc := json.NewEncoder(&buf)
+	if err := enc.Encode(body); err != nil {
+		log.Fatalf("Can't encode json. %s", err)
+	}
+
+	resp, err := http.Post(url, contentType, &buf)
+	if err != nil {
+		log.Fatalf("There was a problem when trying to create a release. %v", err)
+	}
+
+	defer resp.Body.Close()
 
 }
