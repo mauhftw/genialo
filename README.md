@@ -21,7 +21,7 @@ Tool for automating common ops tasks written in go
 
 ## Requirements
 
-The following packages are required by conquest-local
+The following packages are required by genialo
 
 | Package Name | URL | Minimum required version |
 | ------------ | --- | ------------------------ |
