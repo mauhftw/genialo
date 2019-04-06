@@ -2,9 +2,9 @@
 BIN=genialo
 GOCMD=go
 GOBUILD=$(GOCMD) build
+GOBUILD_CONTAINER=CGO_ENABLED=0 GOOS=linux $(GOCMD) build -a -installsuffix nocgo
 GOCLEAN=$(GOCMD) clean
 GOGET=$(GOCMD) get
-TESTCMD=ginkgo
 
 # Install all the build and lint dependencies
 .PHONY: setup
@@ -50,6 +50,12 @@ lint:
 build:
 	@echo "Building $(BIN) application into dist folder..."
 	@$(GOBUILD) -o dist/$(BIN)
+
+# Build a version for container
+.PHONY: build-container
+build-container:
+	@echo "Building $(BIN) application into dist folder..."
+	@$(GOBUILD_CONTAINER) -o dist/$(BIN)
 
 # Remove temporary files
 .PHONY: clean

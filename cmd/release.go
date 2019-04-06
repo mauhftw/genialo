@@ -1,10 +1,11 @@
 package cmd
 
 import (
+	// 3rd Party
 	"github.com/spf13/cobra"
 )
 
-// release flags
+// Release flags
 var Application string
 var DirectoryBase string
 var Organization string

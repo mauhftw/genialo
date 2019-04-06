@@ -1,9 +1,11 @@
 package cmd
 
 import (
+	// System
 	"fmt"
 	"os"
 
+	// 3rd Party
 	"github.com/spf13/cobra"
 )
 
@@ -14,8 +16,8 @@ var rootCmd = &cobra.Command{
 For more info, Please check the repo https://github.com/mauhftw/genialo`,
 }
 
-// agregar logs
-// agregar comentarios
+// TODO: Add logs
+// TODO: Add comments
 func Root() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)

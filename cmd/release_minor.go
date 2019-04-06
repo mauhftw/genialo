@@ -1,24 +1,19 @@
 package cmd
 
 import (
-	"fmt"
-
+	// 3rd Party
 	"github.com/spf13/cobra"
 )
 
-// minor represents the minor command
+// Represents the minor command
 var minorCmd = &cobra.Command{
 	Use:   "minor",
 	Short: "Creates a new minor release",
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("minor called")
-	},
+	Run:   GithubHandler,
 }
 
 func init() {
-	minorCmd.Flags().StringVarP(&DirectoryBase, "directory-base", "d", "", "The current directory you will work on")
 	minorCmd.Flags().StringVarP(&Application, "application", "a", "", "The name of the application you want to release")
+	minorCmd.Flags().StringVarP(&Organization, "organization", "o", "SweatWorks", "The name of the organization/owner of the repo")
 	minorCmd.MarkFlagRequired("application")
-	minorCmd.MarkFlagRequired("directory-base")
-
 }

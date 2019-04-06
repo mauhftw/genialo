@@ -1,12 +1,11 @@
 package cmd
 
 import (
-	//"fmt"
-
+	// 3rd Party
 	"github.com/spf13/cobra"
 )
 
-// major represents the major command
+// Represents the major command
 var majorCmd = &cobra.Command{
 	Use:   "major",
 	Short: "Creates a new major release",

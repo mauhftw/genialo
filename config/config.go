@@ -7,5 +7,5 @@ import (
 // TODO: Add a prefix env variable
 // Define environment variables here
 var (
-	GithubAccessToken = env.GetEnvVar("GUITARISTS_RELEASE_VERSION", "XXXXXXXXXXXXXXXXXXXXX").(string)
+	GithubAccessToken = env.GetEnvVar("GITHUB_CHANGELOG_TOKEN", "github_token").(string)
 )
