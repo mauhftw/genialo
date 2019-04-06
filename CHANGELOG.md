@@ -1,5 +1,8 @@
 # Change Log
 
+## [0.1.2](https://github.com/mauhftw/genialo/tree/0.1.2) (06-04-2019)
+[Full Changelog](https://github.com/mauhftw/genialo/compare/0.1.1...0.1.2)
+
 ## [0.1.1](https://github.com/mauhftw/genialo/tree/0.1.1) (06-04-2019)
 [Full Changelog](https://github.com/mauhftw/genialo/compare/0.1.0...0.1.1)
 
