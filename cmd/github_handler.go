@@ -205,7 +205,7 @@ func BuildChangelog(o *ReleaseOptions) {
 		// Perform git checkout and git pull commands
 		c := &helpers.BashCmd{
 			Cmd:      "/bin/sh",
-			Args:     []string{"-c", "git checkout . && git pull origin master"},
+			Args:     []string{"-c", "git checkout . && git clean -fd && git pull origin master"},
 			ExecPath: changeLogDst,
 		}
 
