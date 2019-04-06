@@ -1,5 +1,15 @@
 # Change Log
 
+## [0.1.4](https://github.com/mauhftw/genialo/tree/0.1.4) (06-04-2019)
+[Full Changelog](https://github.com/mauhftw/genialo/compare/0.1.3...0.1.4)
+
+**Merged pull requests:**
+
+- \[FIX/GITHUB\_LOG\_GENERATOR\] Update github\_handler.go [\#2](https://github.com/mauhftw/genialo/pull/2) ([mauhftw](https://github.com/mauhftw))
+
+## [0.1.3](https://github.com/mauhftw/genialo/tree/0.1.3) (06-04-2019)
+[Full Changelog](https://github.com/mauhftw/genialo/compare/0.1.2...0.1.3)
+
 ## [0.1.2](https://github.com/mauhftw/genialo/tree/0.1.2) (06-04-2019)
 [Full Changelog](https://github.com/mauhftw/genialo/compare/0.1.1...0.1.2)
 
