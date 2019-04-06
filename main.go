@@ -1,10 +1,11 @@
 package main
 
 import (
+	// 3rd Party
 	"genialo/cmd"
 )
 
-// calls root command () genialo
+// Calls root command () genialo
 func main() {
 	cmd.Root()
 
