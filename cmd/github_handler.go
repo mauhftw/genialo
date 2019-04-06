@@ -142,8 +142,8 @@ func CheckRepoStatus(o *ReleaseOptions) {
 		switch opt {
 		case 'y':
 			// Generate changelog
-			// log.Info("Calling to BuildChangelog handler...")
-			// BuildChangelog(o)
+			log.Info("Calling to BuildChangelog handler...")
+			BuildChangelog(o)
 
 			// Create new release version
 			log.Info("Calling to CreateRelease handler...")
