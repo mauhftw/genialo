@@ -300,7 +300,7 @@ func CreateRelease(o *ReleaseOptions) {
 		TagName:         o.FutureRelease,
 		TargetCommitish: "master",
 		Name:            "Release " + o.FutureRelease + " on " + now,
-		Body:            "full changelog at: " + "https://github.com/" + o.Organization + "/" + o.Application + "/CHANGELOG.md",
+		Body:            "full changelog at: " + "https://github.com/" + o.Organization + "/" + o.Application + "/blob/master" + "/CHANGELOG.md",
 		Draft:           false,
 		PreRelease:      false,
 	}
