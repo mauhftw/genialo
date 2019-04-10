@@ -1,0 +1,97 @@
+[
+  {
+    "name" : "Status: Ready for review",
+    "description": "",
+    "color": "48d696"
+  },
+  {
+    "name": "Status: Review passed",
+    "description": "",
+    "color": "03c62e"
+  },
+  {
+    "name": "Status: Has Unaddressed comments",
+    "description": "",
+    "color": "f29109"
+  },
+  {
+    "name": "Status: All comments addressed",
+    "description": "",
+    "color": "76a003"
+  },
+  {
+    "name": "Status: WIP",
+    "description": "",
+    "color": "7057ff"
+  },
+  {
+    "name": "Status: Blocked",
+    "description": "",
+    "color": "cc0a24"
+  },
+  {
+    "name": "Status: Pending CI",
+    "description": "",
+    "color": "fff600"
+  },
+  {
+    "name": "Status: Tests are failing",
+    "description": "",
+    "color": "e5025d"
+  },
+  {
+    "name": "Status: Ready for QA",
+    "description": "",
+    "color": "d2f475"
+  },
+  {
+    "name": "Status: QA Passed",
+    "description": "",
+    "color": "20d842"
+  },
+  {
+    "name": "Status: QA Failed",
+    "description": "",
+    "color": "a8053e"
+  },
+  {
+    "name": "Type: Bug",
+    "description": "",
+    "color": "db5a04"
+  },
+  {
+    "name": "Type: Enhancement",
+    "description": "",
+    "color": "8fd4e8"
+  },
+  {
+    "name": "Type: Feature",
+    "description": "",
+    "color": "4103ad"
+  },
+  {
+    "name": "Type: Question",
+    "description": "",
+    "color": "f6f4f9"
+  },
+  {
+    "name": "Priority: Critical",
+    "description": "",
+    "color": "ff0015"
+  },
+  {
+    "name": "Priority: High",
+    "description": "",
+    "color": "f27d3a"
+  },
+  {
+    "name": "Priority: Medium",
+    "description": "",
+    "color": "fff321"
+  },
+  {
+    "name": "Priority: Low",
+    "description": "",
+    "color": "03a527"
+  }
+]

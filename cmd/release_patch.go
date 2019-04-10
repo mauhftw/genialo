@@ -9,7 +9,7 @@ import (
 var patchCmd = &cobra.Command{
 	Use:   "patch",
 	Short: "Creates a new patch release",
-	Run:   GithubHandler,
+	Run:   GithubReleaseHandler,
 }
 
 func init() {

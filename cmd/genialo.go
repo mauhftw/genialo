@@ -27,4 +27,5 @@ func Root() {
 
 func init() {
 	rootCmd.AddCommand(releaseCmd)
+	rootCmd.AddCommand(labelsCmd)
 }

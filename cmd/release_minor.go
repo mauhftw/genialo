@@ -9,7 +9,7 @@ import (
 var minorCmd = &cobra.Command{
 	Use:   "minor",
 	Short: "Creates a new minor release",
-	Run:   GithubHandler,
+	Run:   GithubReleaseHandler,
 }
 
 func init() {
