@@ -11,6 +11,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+// Get future release
 func GetFutureRelease(o *ReleaseOptions, t string) {
 
 	release := map[string]int{

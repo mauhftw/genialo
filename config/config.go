@@ -1,7 +1,7 @@
 package config
 
 import (
-	env "genialo/helpers"
+	env "github.com/mauhftw/genialo/helpers"
 )
 
 // TODO: Add a prefix env variable

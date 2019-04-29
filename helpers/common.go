@@ -31,7 +31,4 @@ func ExecBashCmd(c *BashCmd) {
 		log.Errorf("\t %v", string(out))
 		log.Fatalf("\t %v", err)
 	}
-
-	// Prompt
-
 }

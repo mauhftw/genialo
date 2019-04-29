@@ -9,12 +9,12 @@ import (
 	"os"
 	"strings"
 
-	"genialo/config"
-
+	"github.com/mauhftw/genialo/config"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
 
+// Define labelOption struct
 type LabelsOptions struct {
 	Organization string
 	LabelFile    string
@@ -182,6 +182,7 @@ func CreateLabels(o *LabelsOptions, l Label) {
 
 }
 
+// Attempt to list repo's labels
 func ListLabels(o *LabelsOptions) string {
 
 	// Prepare request for creating labels

@@ -13,8 +13,8 @@ import (
 	"time"
 
 	// 3rd party
-	"genialo/config"
-	"genialo/helpers"
+	"github.com/mauhftw/genialo/config"
+	"github.com/mauhftw/genialo/helpers"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"

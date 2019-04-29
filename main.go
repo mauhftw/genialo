@@ -2,7 +2,7 @@ package main
 
 import (
 	// 3rd Party
-	"genialo/cmd"
+	"github.com/mauhftw/genialo/cmd"
 )
 
 // Calls root command () genialo
